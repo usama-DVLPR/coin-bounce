@@ -4,12 +4,7 @@ const errorHandler = (error, req, res, next) => {
   let data = {
     message: "Internal server error",
   };
-  if (error?.code === "passwordMatch") {
-    status = error.status;
-    data.message = error.message;
 
-    return res.status(status).json(data);
-  }
   if (error.code === 11000) {
     error.message = "Email already Register";
   }

@@ -1,7 +1,7 @@
-// const Joi = require("joi");
 const User = require("../../models/users");
 const bcrypt = require("bcryptjs");
 const userDTO = require("../../dto/user");
+const baseUrl = process.env.BASE_URL;
 
 const authController = {
   async register(req, res, next) {
@@ -39,7 +39,7 @@ const authController = {
         return next(error);
       }
       const userDto = new userDTO(user);
-      return res.status(200).json({ ststus: "success", data: { ...userDto } });
+      return res.status(200).json({ ststus: "success", data: userDto });
     } catch (error) {
       next(error);
     }
